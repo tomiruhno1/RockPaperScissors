@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Verification</title>
+</head>
+<body>
+    <h1>Password Verification</h1>
+
+    <!-- Password Input Form -->
+    <form id="passwordForm">
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" onclick="checkPassword()">Submit</button>
+    </form>
+
+    <!-- Password Generator Form -->
+    <form id="passwordGeneratorForm">
+        <label for="generatedPassword">Generated Password:</label>
+        <input type="text" id="generatedPassword" readonly>
+        <button type="button" onclick="generateRandomPassword()">Generate Password</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        // Replace 'yourPassword' with the correct password
+        let correctPassword = password;
+
+        function checkPassword() {
+            const enteredPassword = document.getElementById('password').value;
+
+            if (enteredPassword === password) {
+                document.getElementById('result').textContent = 'Password is correct!';
+            } else {
+                document.getElementById('result').textContent = 'Password is incorrect. Try again.';
+            }
+        }
+
+        // Password Generation Function (from previous example)
+        function generateRandomPassword() {
+            const length = 12; // Change the length as needed
+            const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            const numericChars = '0123456789';
+            const specialChars = '!@#$%^&*()_-+=<>?';
+
+            const allChars = uppercaseChars + lowercaseChars + numericChars + specialChars;
+
+            let password = '';
+
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * allChars.length);
+                password += allChars[randomIndex];
+            }
+            
+            document.getElementById('generatedPassword').value = password;
+        }
+    </script>
+</body>
+</html>
